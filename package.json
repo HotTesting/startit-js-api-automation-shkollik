@@ -1,13 +1,14 @@
 {
   "name": "startit-js-api-automation",
   "version": "1.0.0",
+  "private": true,
   "description": "StartIT demo project for students",
   "scripts": {
     "test": "mocha --opts mocha.opts"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Xotabu4/demo.git"
+    "url": "https://github.com/StartITProtractorJS/startit-js-api-automation-shkollik.git"
   },
   "author": "Oleksandr Khotemskyi <xotabu4@gmail.com>",
   "license": "MIT",
