@@ -1,0 +1,159 @@
+@token = Bearer 4tlSJFTNM7_qWpB_w10BObiITiUr-e1ZpzCXmKW1q_T
+@host = ip-5236.sunline.net.ua:30020
+@userId = Sira2nGEiQitjAsKK
+@boardId = JuWbLM3D7YPHWDBym
+@defaultSwimlaneId = sGayvEf4nsswSqNA4
+@swimlaneId = GG9BfjdaZ4NMvYxKv
+@listId = gpqW6djvRpnM6hdQn
+
+@cardId = ZorJruYkwmdn7NE8D
+
+//Get Token
+POST http://{{host}}/users/login HTTP/1.1
+Content-type: application/json
+
+{
+    "email": "test@test.com",
+    "password": "123456"
+}
+
+###
+///Retrieves information about a logged-in user with his auth token.
+GET http://{{host}}/api/user HTTP/1.1
+Authorization: {{token}}
+
+
+###
+//Retrieves the user list
+GET http://{{host}}/api/users HTTP/1.1
+Authorization: {{token}}
+
+###
+///api/users/:id
+GET http://{{host}}/api/users/{{userId}} HTTP/1.1
+Authorization: {{token}}
+
+###
+//create a user
+POST http://{{host}}/api/users HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+{
+    "username": "testVladdddd",
+    "password": "123456789",
+    "email": "testVladdddd@vlad.com"
+}
+
+###
+///users/register
+POST http://{{host}}/users/register HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+{
+    "username": "testVlad9999",
+    "password": "123456789",
+    "email": "testVlad9999@vlad.com"
+}
+
+###
+///user delete
+DELETE http://{{host}}/api/users/{{userId}} HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+###
+///create a board
+POST http://{{host}}/api/boards HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+{
+    "title":"Vlad Board 3",
+    "owner":"{{userId}}",
+    "permission":"private",
+    "color":"nephritis"
+}
+
+###
+///delete a board
+DELETE http://{{host}}/api/boards/{{boardId}} HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+###
+///add swimlane to Board 
+POST http://{{host}}/api/boards/{{boardId}}/swimlanes HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+{
+    "title":"Vlad swimline2"
+}
+
+###
+///get swimlanes
+GET http://{{host}}/api/boards/{{boardId}}/swimlanes HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+
+###
+///delete swimlane from Board 
+DELETE http://{{host}}/api/boards/{{boardId}}/swimlanes/{{swimlaneId}} HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+###
+///get_all_lists
+GET http://{{host}}/api/boards/{{boardId}}/lists HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+###
+///add a list  to Board 
+POST http://{{host}}/api/boards/{{boardId}}/lists HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+{
+    "title":"Vlad list 2"
+}
+
+###
+///remove list
+DELETE http://{{host}}/api/boards/{{boardId}}/lists/{{listId}} HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+###
+///Retrieve cards by swimlane id
+GET http://{{host}}/api/boards/{{boardId}}/swimlanes/{{swimlaneId}}/cards HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+
+
+###
+///Add Card to List-Board-Swimlane 
+POST http://{{host}}/api/boards/{{boardId}}/lists/{{listId}}/cards HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+{
+    "title":"Vlad card",
+    "description": "Vlad card description",    
+    "authorId": "{{userId}}",
+    "swimlaneId":"{{swimlaneId}}"
+}
+
+###
+///Delete Card
+DELETE http://{{host}}/api/boards/{{boardId}}/lists/{{listId}}/cards/{{cardId}} HTTP/1.1
+Authorization: {{token}}
+Content-type: application/json
+
+{  
+    "authorId": "{{userId}}"
+}
